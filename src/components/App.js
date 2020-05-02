@@ -1,8 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import Welcome from './Welcome';
-import EssayCreate from './EssayCreate';
-import EssayGrade from './EssayGrade';
+import Essay from './Essay';
 import history from '../history';
 
 const App = () => {
@@ -12,8 +11,7 @@ const App = () => {
                 <div className='ui container'>
                     <Switch>
                         <Route path="/" exact component={Welcome} />
-                        <Route path="/essay" exact component={EssayCreate} />
-                        <Route path="/grade" exact component={EssayGrade} />
+                        <Route path="/essay" exact component={Essay} />
                     </Switch>
                 </div>
             </Router>

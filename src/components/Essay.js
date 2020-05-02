@@ -5,7 +5,7 @@ import lightning from '../images/lightning.png'
 import { Link } from 'react-router-dom';
 
 
-class EssayCreate extends React.Component{
+class Essay extends React.Component{
     
     renderSelect = ({label}) => {
         return(
@@ -26,6 +26,40 @@ class EssayCreate extends React.Component{
             </div>
         );
     };
+
+    renderShowGrade(){
+        return(
+            <div style={{marginBottom: '20px'}}>
+                <div class="ui orange message">Your Score: 4.5</div>
+                <table class="ui orange table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sentence Count</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>Sentence-Word Ratio</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>Word Count after Removing Stop Words</td>
+                            <td>160</td>
+                        </tr>
+                        <tr>
+                            <td>Misspelled Word Count</td>
+                            <td>8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
     
     render() {
     return (
@@ -35,19 +69,19 @@ class EssayCreate extends React.Component{
                     <div className="left menu">
                         <img alt='logo' src={lightning} style={{height: '32px', width: '32px'}}/>
                         <h2 style={{color: '#ff5cf3', margin: '0px 0px 0px 5px'}}>aegs</h2>
-                        <label style={{color: '#ff5cf3', padding: '7px 5px'}}>| The Platform To AFILLIBISI</label>
                     </div>
                 </Link>
             </div>
-            <div class="ui yellow message">
-                <i class="star icon"></i>
+            <div className="ui yellow message">
+                <i className="star icon"></i>
                 Select topic and type essay then submit it to see your grade.
             </div>
             <form className="ui form">
                 <Field name="topic" component={this.renderSelect} label="Topic:"/>
                 <Field name="essay" component={this.renderTextArea} label="Essay:"/>
-                <button className="ui button positive" style={{marginTop:'10px'}}>Show Grade</button>
+                <button className="ui button positive" style={{margin:'10px 0px 20px 0px'}}>Show Grade</button>
             </form>
+            {this.renderShowGrade()}
         </div>
     );
     }
@@ -55,6 +89,6 @@ class EssayCreate extends React.Component{
 }
 
 export default reduxForm({
-    form: 'essayCreate',
-})(EssayCreate);
+    form: 'essay',
+})(Essay);
 
