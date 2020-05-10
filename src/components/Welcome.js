@@ -17,7 +17,7 @@ const Welcome = () => {
                 <div className="left menu">
                     <img alt='logo' src={lightning} style={{height: '32px', width: '32px'}}/>
                     <h2 style={{color: '#ff5cf3', margin: '0px 0px 0px 5px'}}>aegs</h2>
-                    <label style={{color: '#ff5cf3', padding: '7px 5px'}}>| The Platform To AFILLIBISI</label>
+                    <label style={{color: '#ff5cf3', padding: '7px 5px'}}>| The Platform To Do Faster</label>
                 </div>
                 <div className="right menu">
                     <Link to="/essay" className="ui positive button">Learn Your Grade</Link>
@@ -26,7 +26,7 @@ const Welcome = () => {
             <div style={{textAlign: 'center', padding: '30px 0px 0px 0px'}}>
                 <h2 style={{ fontFamily: 'Squada One', fontSize: '40px', margin: '0px 0px'}}>Automated</h2>
                 <h2 style={{ fontFamily: 'Squada One', fontSize: '40px', margin: '0px 0px 5px 0px'}}>Essay Grading</h2>
-                <label style={{ fontFamily: 'Abel', fontSize: '16px', color: '#277a7d'}}>aegs is an online collaboration platform that’s built around your needs, and it’s free.</label>
+                <label style={{ fontFamily: 'Abel', fontSize: '16px', color: '#277a7d'}}>aegs is an online collaboration platform that’s built around your needs, fast and cheap</label>
             </div>
             <div className="ui divider"></div>
             <div className="ui three column grid">
