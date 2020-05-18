@@ -7,11 +7,34 @@ import EssayForm from './EssayForm';
 
 class Essay extends React.Component{
 
+    renderMisspelled(){
+        if(this.props.essay.score.correction.localeCompare("") !== 0){
+            const correction = this.props.essay.score.correction;
+            const tuples = correction.split(',');
+            return tuples.map(tuple => {
+                return(
+                    <div className="ui red label">
+                        {tuple}
+                    </div>
+                )
+            })
+        }
+    }
+
+    renderTopicResult(){
+        if (this.props.essay.score.selected_topic.localeCompare(this.props.essay.score.predicted_topic) === 0){
+            return(
+                <div className="ui green message">Detected Topic: {this.props.essay.score.predicted_topic}</div>
+            );
+        }
+        return <div className="ui red message">Detected topic and selected topic did not match! Are you sure you selected the right topic? </div>;
+    }
+
     renderShowGrade(){
-        if (this.props.essay.score !== undefined ) {
+        if (this.props.essay.score !== undefined) {
             return(
                 <div style={{marginBottom: '20px'}}>
-                    <div className="ui orange message">Your Score: {this.props.essay.score.score}</div>
+                    {this.renderTopicResult()}
                     <table className="ui orange table">
                         <thead>
                             <tr>
@@ -36,8 +59,19 @@ class Essay extends React.Component{
                                 <td>Word Count after Removing Stop Words</td>
                                 <td>{this.props.essay.score.word}</td>
                             </tr>
+                            <tr>
+                                <td>Unique Word Count after Removing Stop Words</td>
+                                <td>{this.props.essay.score.unique}</td>
+                            </tr>
                         </tbody>
                     </table>
+                    <div>
+                        <h2 className="ui sub header">
+                            Misspelled Words
+                        </h2>
+                    </div>
+                    <div className="ui horizontal list">{this.renderMisspelled()}</div>
+                    <div className="ui orange message">Your Score: {this.props.essay.score.score}</div>
                 </div>
             );
         }
@@ -60,7 +94,7 @@ class Essay extends React.Component{
                 </div>
                 <div className="ui yellow message">
                     <i className="star icon"></i>
-                    Type essay then submit it to see your score.
+                    Select topic then type your essay then submit it to see your score.
                 </div>
                 <EssayForm onSubmit={this.onSubmit} />
                 {this.renderShowGrade()}
